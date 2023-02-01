@@ -1,0 +1,19 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  output:
+    ansi:
+      enabled: ALWAYS
+logging:
+  level:
+    root: warn
+    org:
+      springframework:
+        web: warn
+      hibernate: error
+    br:
+      com:
+        sulamerica:
+          arquitetura: info
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(-){faint} %clr([%20.20t]){faint} %clr(%34.34logger{33}){cyan} %clr(:){red} %m%n%wEx"
