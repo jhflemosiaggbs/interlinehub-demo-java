@@ -21,7 +21,6 @@ jobs:
           distribution: 'temurin'
 
       - name: Echo
-        uses: actions/setup-java@v3
         run: echo jhflemos_${{ needs.entrypoint.outputs.artifactId }}
   #    
   #    - name: mvnTest
