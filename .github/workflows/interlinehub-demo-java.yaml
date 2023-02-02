@@ -26,20 +26,20 @@ jobs:
       - name: mvnPackage
         run: mvn package -DskipTests
       
-  #    - name: sonarCloudScan
-  #      uses: sonarsource/sonarcloud-github-action@master
-  #      env:
-  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #      with:
-  #        projectBaseDir: src/
-  #        args: >
-  #          -Dsonar.organization=jhflemos
-  #          -Dsonar.projectKey=jhflemos_${{ needs.entrypoint.outputs.artifactId }}
-  #          -Dsonar.projectVersion=${{ needs.entrypoint.outputs.version }}
-  #          -Dsonar.coverage.jacoco.xmlReportPaths=../target/site/jacoco/jacoco.xml
-  #          -Dsonar.java.binaries=../target/classes
-  #          -Dsonar.coverage.exclusions=test/**
+      - name: sonarCloudScan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: src/
+          args: >
+            -Dsonar.organization=jhflemos
+            -Dsonar.projectKey=jhflemos_${{ needs.entrypoint.outputs.artifactId }}
+            -Dsonar.projectVersion=${{ needs.entrypoint.outputs.version }}
+            -Dsonar.coverage.jacoco.xmlReportPaths=../target/site/jacoco/jacoco.xml
+            -Dsonar.java.binaries=../target/classes
+            -Dsonar.coverage.exclusions=test/**
 #
   #    #- name: sonarCloudQualityGate
   #    #  id: sonarqube-quality-gate-check
