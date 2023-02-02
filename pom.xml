@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.demo</groupId>
-	<artifactId>cicd-demo-java</artifactId>
+	<artifactId>interlinehub-demo-java</artifactId>
 	<version>1.0.0</version>
-	<name>cicd-demo-java</name>
+	<name>interlinehub-demo-java</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
