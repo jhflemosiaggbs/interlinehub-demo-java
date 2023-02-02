@@ -1,8 +1,6 @@
 name: Java CICD
 on:
-  pull_request:
-    types:
-      - "closed"
+  [push]
 
 jobs:
   entrypoint:
