@@ -22,6 +22,7 @@ jobs:
 
       - name: Echo
         run: echo jhflemos_${{ needs.entrypoint.outputs.artifactId }}
+        
   #    
   #    - name: mvnTest
   #      run: mvn verify test
