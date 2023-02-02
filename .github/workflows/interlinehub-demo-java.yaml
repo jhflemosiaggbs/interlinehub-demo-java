@@ -1,12 +1,15 @@
+
+
 name: Java CICD
+
 on:
-  [push]
+  push:
+    branches:
+      - develop
 
 jobs:
-  call-entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflow-templates/entrypoint.yaml@develop
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+  entrypoint:
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
 
   #buildAndTest:
   #  needs: [entryPoint]
