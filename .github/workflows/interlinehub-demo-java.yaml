@@ -3,11 +3,10 @@ on:
   [push]
 
 jobs:
-  entrypoint:
+  call-entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflow-templates/entrypoint.yaml@develop
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
-
 
   #buildAndTest:
   #  needs: [entryPoint]
