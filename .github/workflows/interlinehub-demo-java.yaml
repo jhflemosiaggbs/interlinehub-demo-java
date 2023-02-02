@@ -4,7 +4,7 @@ on:
 
 jobs:
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflow-templates/entrypoint.yaml
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflow-templates/entrypoint.yaml@develop
 
   #buildAndTest:
   #  needs: [entryPoint]
