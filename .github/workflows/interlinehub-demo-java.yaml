@@ -19,17 +19,13 @@ jobs:
         with:
           java-version: '18'
           distribution: 'temurin'
-
-      - name: Echo
-        run: echo jhflemos_${{ needs.entrypoint.outputs.artifactId }}
-        
-  #    
-  #    - name: mvnTest
-  #      run: mvn verify test
-  #    
-  #    - name: mvnPackage
-  #      run: mvn package -DskipTests
-  #    
+          
+      - name: mvnTest
+        run: mvn verify test
+      
+      - name: mvnPackage
+        run: mvn package -DskipTests
+      
   #    - name: sonarCloudScan
   #      uses: sonarsource/sonarcloud-github-action@master
   #      env:
