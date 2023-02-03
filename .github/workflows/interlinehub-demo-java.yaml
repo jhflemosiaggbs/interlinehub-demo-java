@@ -24,16 +24,17 @@ jobs:
     with:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
       version : ${{ needs.entrypoint.outputs.version }}
+  
+  registry:
+    needs: [entryPoint, sonarScan]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/registryS3.yaml@develop
+    secrets: inherit
+    with:
+      artifactId: ${{ needs.entrypoint.outputs.artifactId }}
+      version : ${{ needs.entrypoint.outputs.version }}
+      branchName : ${{ needs.entrypoint.outputs.branchName }}
        
-  #    - name: registry 
-  #      uses: hkusu/s3-upload-action@v2
-  #      with:
-  #        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #        aws-region: 'eu-west-2'
-  #        aws-bucket: 'aigcih-${{ needs.entrypoint.outputs.artifactId }}'
-  #        file-path: './target/${{ needs.entrypoint.outputs.artifactId }}.jar'
-  #        destination-dir: '/${{ needs.entrypoint.outputs.branchName }}/${{ needs.entrypoint.outputs.version }}'
+ 
   #
   #deployLambdaFunction:
   #  needs: [entryPoint, buildAndTest]
