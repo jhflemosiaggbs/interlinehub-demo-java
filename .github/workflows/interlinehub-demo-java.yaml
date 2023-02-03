@@ -9,8 +9,12 @@ jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
   
+  test:
+    needs: [entrypoint]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/testJavaMaven.yaml@develop
+    
   build:
-    needs: [entryPoint]
+    needs: [entryPoint, test]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/buildJavaMaven.yaml@develop
     secrets: inherit
     with:
@@ -18,9 +22,6 @@ jobs:
       version : ${{ needs.entrypoint.outputs.version }}
       branchName: ${{ needs.entrypoint.outputs.branchName }}
 
-  test:
-    needs: [build]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/testJavaMaven.yaml@develop
 
 
   
