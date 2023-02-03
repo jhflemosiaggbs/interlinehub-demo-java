@@ -16,26 +16,15 @@ jobs:
   build:
     needs: [entryPoint, test]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/buildJavaMaven.yaml@develop
+  
+  sonarScan:
+    needs: [entryPoint, build]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/sonarCloudScan.yaml@develop
     secrets: inherit
     with:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
       version : ${{ needs.entrypoint.outputs.version }}
-      branchName: ${{ needs.entrypoint.outputs.branchName }}
 
-
-
-  
-    
-#
-  #    #- name: sonarCloudQualityGate
-  #    #  id: sonarqube-quality-gate-check
-  #    #  uses: sonarsource/sonarqube-quality-gate-action@master
-  #    #  # Force to fail step after specific time.
-  #    #  timeout-minutes: 5
-  #    #  env:
-  #    #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #    #  with:
-  #    #    scanMetadataReportFile: src/.scannerwork/report-task.txt
   #          
   #    - name: registry 
   #      uses: hkusu/s3-upload-action@v2
