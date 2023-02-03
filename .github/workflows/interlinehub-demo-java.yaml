@@ -13,7 +13,6 @@ env:
 jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
-
   
   #test:
   #  needs: [entrypoint]
