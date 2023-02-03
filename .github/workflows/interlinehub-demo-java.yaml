@@ -13,7 +13,6 @@ env:
 jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
-
   
   #test:
   #  needs: [entrypoint]
@@ -48,5 +47,4 @@ jobs:
   #    artifactId: ${{ needs.entrypoint.outputs.artifactId }}
   #    version : ${{ needs.entrypoint.outputs.version }}
   #    branchName : ${{ needs.entrypoint.outputs.branchName }}
-       
        
