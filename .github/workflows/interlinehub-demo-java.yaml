@@ -25,6 +25,7 @@ jobs:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
       version : ${{ needs.entrypoint.outputs.version }}
     
+    
   #          
   #    - name: registry 
   #      uses: hkusu/s3-upload-action@v2
