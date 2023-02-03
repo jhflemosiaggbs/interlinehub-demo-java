@@ -33,19 +33,15 @@ jobs:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
       version : ${{ needs.entrypoint.outputs.version }}
       branchName : ${{ needs.entrypoint.outputs.branchName }}
+  
+  deploy:
+    needs: [entryPoint, registry]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/deployLambda.yaml@develop
+    secrets: inherit
+    with:
+      artifactId: ${{ needs.entrypoint.outputs.artifactId }}
+      version : ${{ needs.entrypoint.outputs.version }}
+      branchName : ${{ needs.entrypoint.outputs.branchName }}
        
  
-  #
-  #deployLambdaFunction:
-  #  needs: [entryPoint, buildAndTest]
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #  - name: deployAWSLambda
-  #    uses: appleboy/lambda-action@master
-  #    with:
-  #      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #      aws_region: 'eu-west-2'
-  #      function_name: AIGCIH_UpdateFunctionProcess_Development
-  #      s3_bucket: 'aigcih-${{ needs.entrypoint.outputs.artifactId }}'
-  #      s3_key: 'artifacts/${{ needs.entrypoint.outputs.branchName }}/${{ needs.entrypoint.outputs.version }}/${{ needs.entrypoint.outputs.artifactId }}.jar'
+  
