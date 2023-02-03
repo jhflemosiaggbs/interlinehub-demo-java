@@ -9,7 +9,7 @@ jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
   
-  buildAndTest:
+  build:
     needs: [entryPoint]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/buildJavaMaven.yaml@develop
     secrets: inherit
@@ -17,6 +17,13 @@ jobs:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
       version : ${{ needs.entrypoint.outputs.version }}
       branchName: ${{ needs.entrypoint.outputs.branchName }}
+
+  test:
+    needs: [build]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/testJavaMaven.yaml@develop
+
+
+  
     
 #
   #    #- name: sonarCloudQualityGate
