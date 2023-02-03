@@ -24,7 +24,6 @@ jobs:
     with:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
       version : ${{ needs.entrypoint.outputs.version }}
-      
 
   #          
   #    - name: registry 
