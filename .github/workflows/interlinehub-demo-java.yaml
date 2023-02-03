@@ -13,8 +13,8 @@ env:
 jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
-
-
+    with:
+      GITHUB_CONTEXT: $GITHUB_CONTEXT
 
   #test:
   #  needs: [entrypoint]
