@@ -5,14 +5,14 @@ on:
     branches:
       - develop
 
-env:
-  recipe: java
-  deploy: lambda
   
 
-jobs:
+jobs:  
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
+    with:
+      recipe: java
+      deploy: lambda
 
   #test:
   #  needs: [entrypoint]
