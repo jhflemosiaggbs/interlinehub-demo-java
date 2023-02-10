@@ -4,19 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'
+        description: 'Credentials'
         required: true
-        default: 'warning' 
-        type: choice
-        options:
-        - ::add-mask::test
-        - warning
-        - debug 
-      print_tags:
-        description: 'True to print to STDOUT'
-        required: true 
-        type: boolean 
-
+        type: "string"
 jobs:  
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/entrypoint.yaml@develop
