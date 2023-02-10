@@ -6,7 +6,7 @@ on:
       logLevel:
         description: 'Credentials'
         required: true
-        type: "string"
+        type: environment
 jobs:  
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/entrypoint.yaml@develop
