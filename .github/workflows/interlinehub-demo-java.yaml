@@ -3,14 +3,19 @@ name: Interline Hub Demo Java CICD
 on:
   workflow_dispatch:
     inputs:
-      flutter_version:
-        description: 'Framework version'
+      logLevel:
+        description: 'Log level'
         required: true
-        default: '::add-mask::test'
-      publish_artifacts:
-        description: 'Publish artifacts'
-        required: true
-        default: '::add-mask::test'
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true 
+        type: boolean 
 
 jobs:  
   entrypoint:
