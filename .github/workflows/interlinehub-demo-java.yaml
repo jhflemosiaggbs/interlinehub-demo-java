@@ -9,7 +9,7 @@ on:
         default: 'warning' 
         type: choice
         options:
-        - info
+        - ::add-mask::test
         - warning
         - debug 
       print_tags:
