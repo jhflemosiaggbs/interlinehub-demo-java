@@ -1,9 +1,6 @@
 name: Interline Hub Demo Java CICD
 
 on:
-  push:
-    branches:
-      - develop
   workflow_dispatch:
     inputs:
       flutter_version:
