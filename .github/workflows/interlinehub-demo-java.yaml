@@ -7,19 +7,19 @@ on:
 
 jobs:  
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/entrypoint.yaml@develop
 #
   test:
     needs: [entrypoint]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/testJavaMaven.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/testJavaMaven.yaml@develop
 #    
   build:
     needs: [entryPoint]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/buildJavaMaven.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/buildJavaMaven.yaml@develop
 #
   sonarScan:
     needs: [entryPoint, test, build]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/sonarCloudScan.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/sonarCloudScan.yaml@develop
     secrets: inherit
     with:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
@@ -27,7 +27,7 @@ jobs:
 #
   registry:
     needs: [entryPoint, sonarScan]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/registryS3.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/registryS3.yaml@develop
     secrets: inherit
     with:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
@@ -36,7 +36,7 @@ jobs:
 #
   deploy:
     needs: [entryPoint, registry]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/deployLambda.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/deployLambda.yaml@develop
     secrets: inherit
     with:
       artifactId: ${{ needs.entrypoint.outputs.artifactId }}
