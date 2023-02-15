@@ -12,7 +12,6 @@ jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint-${{env.lang}}.yaml@develop
       
-
   #test:
   #  needs: [entrypoint]
   #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-${{ env.lang }}.yaml@develop
