@@ -5,19 +5,19 @@ on:
     branches:
       - develop
 env:
-  lang: java
+  LANG: java
 
 jobs:  
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}/entrypoint.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.LANG }}/entrypoint.yaml@develop
       
   test:
     needs: [entrypoint]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}unitTest.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.LANG }}unitTest.yaml@develop
   
   build:
     needs: [entryPoint, test]
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}/build.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.LANG }}/build.yaml@develop
   
   #sonarScan:
   #  needs: [entryPoint, build]
