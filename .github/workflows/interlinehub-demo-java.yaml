@@ -13,10 +13,11 @@ jobs:
     needs: [entryPoint]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/build-java.yaml@develop
   
-  test:
+  unitTest:
     needs: [entrypoint, build]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-java.yaml@develop
 
+  contractTest:
     needs: [entrypoint, build]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/contract-test-java.yaml@develop
   
