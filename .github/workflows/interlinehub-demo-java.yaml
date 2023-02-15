@@ -17,7 +17,6 @@ jobs:
     needs: [entrypoint, build]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-java.yaml@develop
 
-  test:
     needs: [entrypoint, build]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/contract-test-java.yaml@develop
   
