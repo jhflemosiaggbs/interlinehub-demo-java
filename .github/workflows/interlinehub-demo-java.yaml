@@ -4,13 +4,43 @@ on:
   push:
     branches:
       - develop
+env:
+  lang: java
 
 jobs:  
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
-    secrets: inherit
-    with:
-      recipe: java
-      provider: lambda
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}/entrypoint.yaml@develop
       
-      
+  test:
+    needs: [entrypoint]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}unitTest.yaml@develop
+  
+  build:
+    needs: [entryPoint, test]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}/build.yaml@develop
+  
+  #sonarScan:
+  #  needs: [entryPoint, build]
+  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/sonarCloudScan.yaml@develop
+  #  secrets: inherit
+  #  with:
+  #    artifactId: ${{ needs.entrypoint.outputs.artifactId }}
+  #    version : ${{ needs.entrypoint.outputs.version }}
+##
+  #registry:
+  #  needs: [entryPoint, sonarScan]
+  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/registryS3.yaml@develop
+  #  secrets: inherit
+  #  with:
+  #    artifactId: ${{ needs.entrypoint.outputs.artifactId }}
+  #    version : ${{ needs.entrypoint.outputs.version }}
+  #    branchName : ${{ needs.entrypoint.outputs.branchName }}
+##
+  #deploy:
+  #  needs: [entryPoint, registry]
+  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/deployLambda.yaml@develop
+  #  secrets: inherit
+  #  with:
+  #    artifactId: ${{ needs.entrypoint.outputs.artifactId }}
+  #    version : ${{ needs.entrypoint.outputs.version }}
+  #    branchName : ${{ needs.entrypoint.outputs.branchName }}
