@@ -1,47 +1,14 @@
 name: Interline Hub Demo Java CICD
 
 on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Credentials'
-        required: true
-        type: environment
+  push:
+    branches:
+      - develop
+
 jobs:  
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/entrypoint.yaml@develop
-#
-  test:
-    needs: [entrypoint]
-    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/testJavaMaven.yaml@develop
-#    
-  build:
-    needs: [entryPoint]
-    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/buildJavaMaven.yaml@develop
-#
-  sonarScan:
-    needs: [entryPoint, test, build]
-    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/sonarCloudScan.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint.yaml@develop
     secrets: inherit
     with:
-      artifactId: ${{ needs.entrypoint.outputs.artifactId }}
-      version : ${{ needs.entrypoint.outputs.version }}
-#
-  registry:
-    needs: [entryPoint, sonarScan]
-    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/registryS3.yaml@develop
-    secrets: inherit
-    with:
-      artifactId: ${{ needs.entrypoint.outputs.artifactId }}
-      version : ${{ needs.entrypoint.outputs.version }}
-      branchName : ${{ needs.entrypoint.outputs.branchName }}
-#
-  deploy:
-    needs: [entryPoint, registry]
-    uses: jhflemosiaggbs/cicd-iaggbs-library/.github/workflows/deployLambda.yaml@develop
-    secrets: inherit
-    with:
-      artifactId: ${{ needs.entrypoint.outputs.artifactId }}
-      version : ${{ needs.entrypoint.outputs.version }}
-      branchName : ${{ needs.entrypoint.outputs.branchName }}
-       
+      recipe: java
+      provider: lambda
