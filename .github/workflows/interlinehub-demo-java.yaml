@@ -9,13 +9,13 @@ jobs:
   entrypoint:
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint-java.yaml@develop
       
-  #test:
-  #  needs: [entrypoint]
-  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-java.yaml@develop
-  #
-  #build:
-  #  needs: [entryPoint, test]
-  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/build-java.yaml@develop
+  test:
+    needs: [entrypoint]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-java.yaml@develop
+  
+  build:
+    needs: [entryPoint, test]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/build-java.yaml@develop
   
   #sonarScan:
   #  needs: [entryPoint, build]
