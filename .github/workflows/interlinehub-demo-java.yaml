@@ -10,7 +10,7 @@ env:
 
 jobs:  
   entrypoint:
-    uses: "jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint-$lang.yaml@develop"
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint-${{ env.lang }}.yaml@develop
       
   #test:
   #  needs: [entrypoint]
