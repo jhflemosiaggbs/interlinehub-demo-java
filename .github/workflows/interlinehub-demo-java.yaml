@@ -6,19 +6,19 @@ on:
       - develop
 
 env:
-  lang: java
+  lang: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint-java.yaml@develop
 
 jobs:  
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint-${{env.lang}}.yaml@develop
+    uses: "${{env.lang}}"
       
   #test:
   #  needs: [entrypoint]
-  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-${{ env.lang }}.yaml@develop
+  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-java.yaml@develop
   #
   #build:
   #  needs: [entryPoint, test]
-  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/build-${{ env.lang }}.yaml@develop
+  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/build-java.yaml@develop
   
   #sonarScan:
   #  needs: [entryPoint, build]
