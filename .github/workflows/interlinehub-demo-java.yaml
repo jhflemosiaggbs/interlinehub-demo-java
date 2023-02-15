@@ -10,15 +10,15 @@ env:
 
 jobs:  
   entrypoint:
-    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.lang }}/entrypoint.yaml@develop
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/entrypoint$_{{ env.lang }}.yaml@develop
       
-  #test:
-  #  needs: [entrypoint]
-  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.LANG }}/unitTest.yaml@develop
-  #
-  #build:
-  #  needs: [entryPoint, test]
-  #  uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/${{ env.LANG }}/build.yaml@develop
+  test:
+    needs: [entrypoint]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unitTest_${{ env.lang }}.yaml@develop
+  
+  build:
+    needs: [entryPoint, test]
+    uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/build_${{ env.lang }}.yaml@develop
   
   #sonarScan:
   #  needs: [entryPoint, build]
