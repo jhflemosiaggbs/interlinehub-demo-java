@@ -16,6 +16,9 @@ jobs:
   unitTest:
     needs: [entrypoint, build]
     uses: jhflemosiaggbs/cicd-iaggbs/.github/workflows/unit-test-java.yaml@develop
+    with:
+      artifactId: ${{ needs.entrypoint.outputs.artifactId }}
+      version : ${{ needs.entrypoint.outputs.version }}
 
   contractTest:
     needs: [entrypoint, build]
